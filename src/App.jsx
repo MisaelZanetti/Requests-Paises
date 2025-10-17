@@ -27,7 +27,14 @@ function App() {
 
     fetch(`https://restcountries.com/v3.1/name/${pais}`)
       .then(res => res.json())
-      .then(data => setInfoPais(data[0]));
+      .then(data => setInfoPais(data[0]))
+      .catch((error) => {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Mala conexionde de wifi!"
+        });
+      })
   }
 
   const abrirMaps = () => {
